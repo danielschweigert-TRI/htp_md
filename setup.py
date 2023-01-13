@@ -19,18 +19,33 @@ with open(readme_path, "r") as f:
 
 setup(
     name='htpmd',
-    version='0.2.5',
+    version='1.0.0',
     description='A library to analyze trajectory data from Molecular Dynamics Simulations',
     long_description=long_description,
     long_description_content_type='text/markdown',
-    url='',
+    url='https://github.com/TRI-AMDD/htp_md',
     packages=find_packages(),
-    python_requires='>=3.6',
+    python_requires='>=3.9',
     install_requires=reqs,
-    extras_require={"tests": reqs_test},
+    extras_require={
+        "tests": reqs_test
+    },
     entry_points={
         'console_scripts': [
             'htpmd=htpmd.main:main',
         ],
-    }
+    },
+    data_files=[('htpmd/ml_models/pre_trained_gnns/', ['htpmd/ml_models/pre_trained_gnns/conductivity.pth',
+                                                       'htpmd/ml_models/pre_trained_gnns/li_diffusivity.pth',
+                                                       'htpmd/ml_models/pre_trained_gnns/poly_diffusivity.pth',
+                                                       'htpmd/ml_models/pre_trained_gnns/tfsi_diffusivity.pth',
+                                                       'htpmd/ml_models/pre_trained_gnns/transference_number.pth',
+                                                       ]),
+                ('htpmd/ml_models/pre_trained_rfs/', ['htpmd/ml_models/pre_trained_rfs/rf_conductivity.sav',
+                                                      'htpmd/ml_models/pre_trained_rfs/rf_li_diffusivity.sav',
+                                                      'htpmd/ml_models/pre_trained_rfs/rf_poly_diffusivity.sav',
+                                                      'htpmd/ml_models/pre_trained_rfs/rf_tfsi_diffusivity.sav',
+                                                      'htpmd/ml_models/pre_trained_rfs/rf_transference_number.sav',
+                                                      ])
+                ],
 )
